@@ -21,6 +21,24 @@ function addBookToLibrary(){
     console.log(myLibrary);
     addToDom(myLibrary);
 }   
+function edit(id){
+    let editBook = [];
+    myLibrary.forEach(element => {
+        if(element.id==id){
+            document.getElementById("title").value = element.title;
+            document.getElementById("author").value = element.author;
+            document.getElementById("pages").value = element.pages+'';
+            console.log(element.read);
+            if(element.read){
+                document.getElementById("yes").checked = true;
+            }else{
+                document.getElementById("no").checked = true;
+            }
+            alert("Value added to the input, edit and enter!\n Temporarily removed from library");
+            deleteBook(id);
+        }
+    });
+}
 
 function deleteBook(id){
     myLibrary.forEach(element => {
@@ -39,6 +57,7 @@ function editRead(id){
             }else{
                 element.read = true;
             }
+            console.log(myLibrary)
             addToDom(myLibrary);
         }
     });
