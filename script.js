@@ -1,5 +1,5 @@
 let myLibrary = [];
-let globalId = 1;
+let globalId = 0;
 
 function Book(title, author, pages, read, id){
     this.title = title;
@@ -10,23 +10,35 @@ function Book(title, author, pages, read, id){
 }
 
 function addBookToLibrary(){
-    let title = document.getElementById("title").value;
-    let author = document.getElementById("author").value;
-    let pages = parseInt(document.getElementById("pages").value);
-    let read = document.getElementById("yes").checked==true ? true : false;
-
-    const book = new Book(title, author, pages, read, globalId++);
-    myLibrary.push(book);
-
+    if(document.getElementById("index").value!=""){
+        let id = parseInt(document.getElementById("index").value);
+        const updateBook = myLibrary.find(book=>book.id==id);
+        updateBook.title = document.getElementById("title").value;
+        updateBook.author = document.getElementById("author").value;
+        updateBook.pages = parseInt(document.getElementById("pages").value);
+        updateBook.read = document.getElementById("yes").checked==true ? true : false;
+    }else{
+        let title = document.getElementById("title").value;
+        let author = document.getElementById("author").value;
+        let pages = parseInt(document.getElementById("pages").value);
+        let read = document.getElementById("yes").checked==true ? true : false;
+    
+        const book = new Book(title, author, pages, read, globalId++);
+        myLibrary.push(book);
+    }
     console.log(myLibrary);
     addToDom(myLibrary);
 }   
 function edit(id){
+    // let editBook = myLibrary.find(book => book.id==id);
+    // editBook.value = document.getElementById("title").value;
+
     myLibrary.forEach(element => {
         if(element.id==id){
             document.getElementById("title").value = element.title;
             document.getElementById("author").value = element.author;
             document.getElementById("pages").value = element.pages+'';
+            document.getElementById("index").value = element.id;
             console.log(element.read);
             if(element.read){
                 document.getElementById("yes").checked = true;
@@ -34,7 +46,7 @@ function edit(id){
                 document.getElementById("no").checked = true;
             }
             alert("Value added to the input, edit and enter!\n Temporarily removed from library");
-            deleteBook(id);
+            // deleteBook(id);
         }
     });
 }
