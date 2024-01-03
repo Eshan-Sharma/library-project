@@ -22,7 +22,6 @@ function addBookToLibrary(){
     addToDom(myLibrary);
 }   
 function edit(id){
-    let editBook = [];
     myLibrary.forEach(element => {
         if(element.id==id){
             document.getElementById("title").value = element.title;
