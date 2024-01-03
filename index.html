@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+</head>
+<body>
+    <br>
+    <div style="text-align: center;">
+        <input type="text" name="title" id="title" placeholder="Enter title"><br>
+        <input type="text" name="author" id="author" placeholder="Enter author"><br>
+        <input type="number" name="pages" id="pages" placeholder="Enter number of pages"><br>
+        
+        <fieldset role="radiogroup">
+            <legend>Read this books?</legend>
+            <input type="radio" name="yes" id="yes"><label>Yes</label>
+            <input type="radio" name="yes" id="no"><label>No</label><br><br>
+        </fieldset>
+        <button class="new-book" onclick="addBookToLibrary()">+ NEW BOOK</button>
+    </div>
+    <div id="content"></div>
+    <script src="script.js"></script>
+</body>
+</html> 
