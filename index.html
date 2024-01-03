@@ -19,7 +19,32 @@
         </fieldset>
         <button class="new-book" onclick="addBookToLibrary()">+ NEW BOOK</button>
     </div>
-    <div id="content"></div>
+    <div id="content">
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Read</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>titleData</td>
+                    <td>authorData</td>
+                    <td>pagesData</td>
+                    <td>readData</td>
+                    <td>Update Read Status</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <script src="script.js"></script>
 </body>
 </html> 

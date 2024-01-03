@@ -20,4 +20,11 @@ function addBookToLibrary(){
     addToDom(myLibrary);
 }   
 
-
+function addToDom(myLibrary){
+    document.getElementById("content").innerHTML = ""
+    myLibrary.forEach(element => {
+        let titleChild = document.createElement("div");
+        titleChild.innerHTML = element.title;
+        document.getElementById("content").appendChild(titleChild);
+    });
+}
