@@ -1,5 +1,5 @@
-let myLibrary = [];
-let globalId = 0;
+let myLibrary = []; //state
+let globalId = 0; //global counter
 
 function Book(title, author, pages, read, id){
     this.title = title;
@@ -17,6 +17,7 @@ function addBookToLibrary(){
         updateBook.author = document.getElementById("author").value;
         updateBook.pages = parseInt(document.getElementById("pages").value);
         updateBook.read = document.getElementById("yes").checked==true ? true : false;
+        document.getElementById("index").value = "";
     }else{
         let title = document.getElementById("title").value;
         let author = document.getElementById("author").value;
@@ -26,13 +27,11 @@ function addBookToLibrary(){
         const book = new Book(title, author, pages, read, globalId++);
         myLibrary.push(book);
     }
-    console.log(myLibrary);
+    // console.log(`Library state: ${myLibrary}`);
     addToDom(myLibrary);
 }   
 function edit(id){
-    // let editBook = myLibrary.find(book => book.id==id);
-    // editBook.value = document.getElementById("title").value;
-
+    //Get data from the array and enter it to input fields
     myLibrary.forEach(element => {
         if(element.id==id){
             document.getElementById("title").value = element.title;
@@ -45,19 +44,21 @@ function edit(id){
             }else{
                 document.getElementById("no").checked = true;
             }
-            alert("Value added to the input, edit and enter!\n Temporarily removed from library");
-            // deleteBook(id);
+            alert("Value added to the input, edit and enter!\nTemporarily removed from library");
+            // deleteBook(id); //Not required
         }
     });
 }
 
 function deleteBook(id){
-    myLibrary.forEach(element => {
+    console.log("here")
+    myLibrary.forEach((element,index) => {
+        console.log(element)
         if(element.id==id){
-            myLibrary.splice(0,id);
-            addToDom(myLibrary)
+            myLibrary.splice(index,1);
         }
     });
+    addToDom(myLibrary)
 }
 
 function editRead(id){
@@ -68,7 +69,7 @@ function editRead(id){
             }else{
                 element.read = true;
             }
-            console.log(myLibrary)
+            // console.log(`Library state: ${myLibrary}`);
             addToDom(myLibrary);
         }
     });
